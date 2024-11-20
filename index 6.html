@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>велком</title>
+    <script src="qr_code_tg_png"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            display: none;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 60%;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #qrCode {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Загадка</h1>
+    <p>Введите разгадку:</p>
+    <input type="text" id="answer" placeholder="Введите ответ">
+    <button onclick="checkAnswer()">Проверить</button>
+
+    <div id="result">
+        <p>Поздравляем, вот ваш QR-код:</p>
+        <div id="qrCode"></div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            var answer = document.getElementById('answer').value.trim().toLowerCase();
+
+            // Правильный ответ на загадку
+            var correctAnswer = ‘It’s only beginning '; // Заменить на правильный ответ для вашей загадки
+
+            if (answer === correctAnswer) {
+                // Генерация QR-кода
+                var qrCode = new QRCode(document.getElementById("qrCode"), {
+                    text: "https://t.me/your_channel", //https://t.me/+9UpDdrGFMSIwOWUy
+                    width: 128,
+                    height: 128
+                });
+                
+                // Показать QR-код
+                document.getElementById('result').style.display = 'block';
+            } else {
+                alert("Неверный ответ, попробуйте снова!");
+            }
+        }
+    </script>
+</body>
+</html>
